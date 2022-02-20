@@ -22,15 +22,21 @@ Ein CMS für die Edith-Stein-Schule Aichach.
 
 ### backend
 * virtual environment aktivieren
-  ``source venv/bin/activate`` 
+
+    ``source venv/bin/activate`` 
+
 * development Server starten
-  ``cd backend``
-  ``python manage.py runserver``
+
+    ``cd backend``
+
+    ``python manage.py runserver``
 
 ### frontend
 * development Server starten
-  ``cd frontend``
-  ``npm run develop``
+
+    ``cd frontend``
+    
+    ``npm run develop``
 
 ## production workflow
 
