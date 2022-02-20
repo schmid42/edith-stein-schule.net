@@ -3,17 +3,37 @@ Ein CMS für die Edith-Stein-Schule Aichach.
 
 ## verwendete Technologien
 
-### Backend
+### backend
 * Python 3.8
 * Wagtail
 
-### Frontend
+### frontend
 
-#### Client
+#### client
 * Bulma
 * glide.js
 * Ionicons
 
-#### Build
+#### build
 * Webpack
 * node-sass
+
+## development workflow
+
+### backend
+* virtual environment aktivieren
+  ``source venv/bin/activate`` 
+* development Server starten
+  ``cd backend``
+  ``python manage.py runserver``
+
+### frontend
+* development Server starten
+  ``cd frontend``
+  ``npm run develop``
+
+## production workflow
+
+### backend
+
+### frontend
