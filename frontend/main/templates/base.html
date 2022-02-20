@@ -1,0 +1,114 @@
+{% load static wagtailuserbar %}
+
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="" />
+
+    <title>
+        {% block title %}
+        {% if self.seo_title %}{{ self.seo_title }}{% else %}{{ self.title }}{% endif %}
+        {% endblock %}
+        {% block title_suffix %}
+        {% with self.get_site.site_name as site_name %}
+        {% if site_name %}- {{ site_name }}{% endif %}
+        {% endwith %}
+        {% endblock %}
+    </title>
+
+    <link rel="shortcut icon" type="image/png" href="{% static 'assets/img/ess_favicon_32x32.png' %}">
+
+    {# Global stylesheets #}
+    <link rel="stylesheet" type="text/css" href="{% static 'bundle_main.css' %}">
+
+    {% block extra_css %}
+    {# Override this in templates to add extra stylesheets #}
+    {% endblock %}
+</head>
+
+<body>
+
+    {% wagtailuserbar %}
+
+    <section class="has-background-grey-light pt-2">
+        <div class="container ">
+
+            <nav class="level">
+                <div class="level-item has-text-centered">
+                    <div>
+                        <p class="heading">
+                            <a class="link is-info" href="https://goo.gl/maps/S2aDzV4nXWJRPw8o8" target="_blank">
+                                Schulstraße 29 | 86551 Aichach
+                            </a>
+                        </p>
+                    </div>
+                </div>
+                <div class="level-item has-text-centered">
+                    <div>
+                        <p class="heading">
+                            <a class="link is-info" href="tel:+498251877930">
+                                Tel: 08251 87793-0
+                            </a>
+                        </p>
+                    </div>
+                </div>
+                <div class="level-item has-text-centered">
+                    <div>
+                        <p class="heading">Fax: 08251 87793-40</p>
+                    </div>
+                </div>
+                <div class="level-item has-text-centered">
+                    <div>
+                        <p class="heading">
+                            <a class="link is-info" href="mailto:verwaltung@sfz-aichach.de">
+                                E-Mail: verwaltung@sfz-aichach.de
+                            </a>
+                        </p>
+                    </div>
+                </div>
+                <div class="level-item has-text-centered">
+                    <div>
+                        <p class="heading">Kontakt</p>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-one-quarter is-flex is-flex-direction-column is-justify-content-space-between">
+                    <figure class="image is-2by1">
+                        <img src="{% static 'assets/img/ess_logo.svg' %}">
+                    </figure>
+                </div>
+                <div class="column is-flex is-flex-direction-column is-justify-content-space-between">
+                    {% include 'navbar.html' %}
+                </div>
+            </div>
+        </div>
+    </section>
+
+    {% block carousel %}{% endblock %}
+
+    {% block content %}{% endblock %}
+
+    {% include 'footer.html' %}
+
+    {# Global javascript #}
+    <script type="text/javascript" src="{% static 'ionicons/ionicons/ionicons.js' %}"></script>
+    <script type="text/javascript" src="{% static 'bundle_main.js' %}"></script>
+
+    {% block extra_js %}
+    {# Override this in templates to add extra javascript #}
+    {% endblock %}
+
+</body>
+
+</html>
