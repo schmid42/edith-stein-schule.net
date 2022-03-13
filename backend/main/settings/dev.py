@@ -1,3 +1,5 @@
+import os
+
 from .base import *
 
 # Base URL to use when referring to full URLs within the Wagtail admin backend -
@@ -8,7 +10,7 @@ BASE_URL = 'http://localhost'
 DEBUG = True
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'top_secret'
+SECRET_KEY = os.getenv('SECRET_KEY')
 
 # SECURITY WARNING: define the correct hosts in production!
 ALLOWED_HOSTS = ['*'] 
@@ -24,7 +26,6 @@ DATABASES = {
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
-
 
 try:
     from .local import *

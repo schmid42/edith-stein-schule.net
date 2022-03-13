@@ -44,3 +44,4 @@ class HomePage(Page):
         FieldPanel('show_alert', classname="full", heading="Benachrichtigung anzeigen"),
         FieldPanel('alert', classname="full", heading="Benachrichtigung"),
     ]
+
