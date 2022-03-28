@@ -35,7 +35,7 @@
 
     {% wagtailuserbar %}
 
-    <section class="has-background-grey-light pt-2">
+    <section class="pt-2">
         <div class="container ">
 
             <nav class="level">
@@ -84,9 +84,11 @@
         <div class="container">
             <div class="columns">
                 <div class="column is-one-quarter is-flex is-flex-direction-column is-justify-content-space-between">
-                    <figure class="image is-2by1">
-                        <img src="{% static 'assets/img/ess_logo.svg' %}">
-                    </figure>
+                    <a href="/">
+                        <figure class="image is-2by1">
+                            <img src="{% static 'assets/img/ess_logo.svg' %}">
+                        </figure>
+                    </a>
                 </div>
                 <div class="column is-flex is-flex-direction-column is-justify-content-space-between">
                     {% include 'navbar.html' %}

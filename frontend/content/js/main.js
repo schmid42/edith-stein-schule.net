@@ -1,13 +1,17 @@
 require('../scss/main.scss');
 
+import { v4 as uuidv4 } from 'uuid';
+
+
 console.log("Hello from content!");
 
-const links = document.querySelectorAll(".page-header ul a");
- 
+// get all submenu links and add click handler for smooth scrolling
+const links = document.querySelectorAll(".submenu");
 for (const link of links) {
   link.addEventListener("click", clickHandler);
 }
- 
+
+
 function clickHandler(e) {
   e.preventDefault();
   const href = this.getAttribute("href");

@@ -7,12 +7,16 @@ from wagtail.core.fields import RichTextField
 from wagtail.admin.edit_handlers import FieldPanel, InlinePanel, MultiFieldPanel, FieldRowPanel
 from wagtail.images.edit_handlers import ImageChooserPanel
 
+import uuid
+
 
 class ContentPageSections(Orderable):
     """TODO"""
+
     page    = ParentalKey("content.ContentPage", related_name="content_sections")
     heading = models.CharField(blank=True, max_length=256)
     body    = RichTextField(blank=True)
+    link    = models.CharField(max_length=36, editable=False, default=uuid.uuid4)
 
     cover = models.ForeignKey(
         'wagtailimages.Image',
@@ -35,10 +39,10 @@ class ContentPageSections(Orderable):
 class ContentPage(Page):
 
 
-    show_heading    = models.BooleanField(default=True)
-    heading         = models.CharField(blank=True, max_length=256)
+    show_heading = models.BooleanField(default=True)
+    heading      = models.CharField(blank=True, max_length=256)
     show_body    = models.BooleanField(default=True)
-    body            = RichTextField(blank=True)
+    body         = RichTextField(blank=True)
 
     content_panels = Page.content_panels + [
         MultiFieldPanel(
