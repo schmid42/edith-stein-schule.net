@@ -10,36 +10,68 @@
 {% endblock %}
 
 {% block content %}
+
+<nav class="navbar" role="navigation" aria-label="main navigation">
+    <div class="container">
+        <div class="navbar-brand">
+            <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false"
+                data-target="contentMenu">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+            </a>
+        </div>
+        <div id="contentMenu" class="navbar-menu">
+            <div class="navbar-start">
+                {% for section in self.content_sections.all %}
+                <a class="navbar-item">
+                    {{ section.heading }}
+                </a>
+                {% endfor %}
+            </div>
+            <div class="navbar-end">
+            </div>
+        </div>
+    </div>
+</nav>
+
 <section class="section welcome">
-    <div class="container is-family-secondary">
+    <div class="container">
+        <h1 class="title">
+            {% if page.show_heading %}
+                {{ page.heading }}
+            {% endif %}
+        </h1>
+        <div class="content">
+            {% if page.show_body %}
+                {{ page.body|richtext }}
+            {% endif %}
+        </div>
+    </div>
+</section>
+
+{% for section in self.content_sections.all %}
+<section class="section">
+    <div class="container">
         <div class="columns">
-            <div class="column is-two-fifths">
-                {% if page.cover %}
-                <div class="polaroid">
-                    <figure class="image">
-                        {% image page.cover width-400 %}
-                    </figure>
-                </div>
-                {% endif %}
+            <div class="column is-one-third">
+                <figure class="image is-4by3">
+                    {% image section.cover fill-800x600 %}
+                </figure>
             </div>
             <div class="column">
-                <h1 class="title has-text-white-ter">
-                    {% if page.show_heading %}
-                        {{ page.heading }}
-                    {% endif %}
+                <h1 class="title">
+                    {{ section.heading }}
                 </h1>
-                <h2 class="subtitle has-text-white-ter pb-4">
-                    {% if page.show_subheading %}
-                        {{ page.subheading }}
-                    {% endif %}
-                </h2>
                 <div class="content">
-                    {{ page.body|richtext }}
+                    {{ section.body|richtext }}
                 </div>
             </div>
         </div>
     </div>
 </section>
+{% endfor %}
+
 {% endblock %}
 
 {% block extra_js %}
