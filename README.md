@@ -29,6 +29,8 @@ Ein CMS für die Edith-Stein-Schule Aichach.
 
     ``cd backend``
 
+    ``$env:DJANGO_SETTINGS_MODULE = "main.settings.dev"``
+
     ``python manage.py runserver``
 
 ### frontend
