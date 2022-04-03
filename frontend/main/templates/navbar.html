@@ -1,38 +1,33 @@
 {% load wagtailcore_tags %}
 {% load static %}
+  <nav class="navbar is-dark container">
 
-<nav class="navbar is-transparent mt-auto">
+
     <div class="navbar-brand">
-      <div class="navbar-burger" data-target="navbarExampleTransparentExample">
+      <a class="navbar-item" href="/">
+        <img src="{% static 'assets/img/ess_logo_raw.svg' %}" height="28">
+      </a>
+      <div class="navbar-burger" data-target="navbarMain">
         <span></span>
         <span></span>
         <span></span>
       </div>
     </div>
-  
-    <div id="navbarExampleTransparentExample" class="navbar-menu">
+
+    <div id="navbarMain" class="navbar-menu">
       <div class="navbar-start">
-        <a class="navbar-item" href="{% slugurl 'leitbild' %}">
-            Leitbild
-          </a>
-          <a class="navbar-item" href="{% slugurl 'schule' %}">
-            Schule
-          </a>
-          <a class="navbar-item" href="{% slugurl 'angebot' %}">
-            Angebot
-          </a>
-          <a class="navbar-item" href="{% slugurl 'kollegium' %}">
-            Kollegium
-          </a>
-          <a class="navbar-item" href="{% slugurl 'schueler' %}">
-            Schüler
-          </a>
-          <a class="navbar-item" href="{% slugurl 'archiv' %}">
-            Archiv
-          </a>
-          <a class="navbar-item" href="/admin">
-            Intern
-          </a>
+        <a class="navbar-item" href="{% slugurl 'static_site' %}">
+          Statische Seite
+        </a>
+        <a class="navbar-item" href="{% slugurl 'blog' %}">
+          Aktuelles
+        </a>
+      </div>
+      <div class="navbar-end">
+        <a class="navbar-item" href="/admin">
+          Intern
+        </a>
       </div>
     </div>
+
   </nav>

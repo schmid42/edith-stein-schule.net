@@ -9,6 +9,9 @@ from wagtail.search import index
 
 class BlogIndexPage(Page):
 
+    class Meta:
+        verbose_name = "Beitragsübersicht"
+
     show_description    = models.BooleanField(default=True)
     description = RichTextField(blank=True)
 
@@ -18,6 +21,10 @@ class BlogIndexPage(Page):
     ]
 
 class BlogPage(Page):
+
+    class Meta:
+        verbose_name = "Beitrag"
+
     date = models.DateField("Post date")
     body = RichTextField(blank=True)
     
@@ -39,3 +46,5 @@ class BlogPage(Page):
         ImageChooserPanel('cover', classname="full", heading="Bild zu dieser Seite"),
         FieldPanel('body', classname="full", heading="Inhalt"),
     ]
+
+

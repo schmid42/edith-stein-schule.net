@@ -14,3 +14,7 @@ b {
     font-weight: $weight-bold;
 }
 
+// global smooth scroll behavior
+html {
+    scroll-behavior: smooth;
+}

@@ -137,6 +137,8 @@ node_modules
 # forlders for compiled files
 backend/**/static
 backend/**/templates
+# exclude dashboard templates (admin app)
+!backend/dashboard/templates
 
 # sensitive information for production
 backend/main/settings/production.py

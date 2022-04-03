@@ -9,119 +9,76 @@
 {% endblock %}
 
 {% block carousel %}
-<section class="section has-background-dark">
-    <div class="container">
-        <div class="glide">
-            <div class="glide__track" data-glide-el="track">
-                <ul class="glide__slides">
-                    {% for c_image in self.carousel_images.all %}
-                    <li class="glide__slide">
-                        {% image c_image.carousel_image fill-1600x300 %}
-                    </li>
-                    {% endfor %}
-                </ul>
-            </div>
-            <div class="glide__arrows" data-glide-el="controls">
-                <button class="glide__arrow glide__arrow--left" data-glide-dir="<"> &lt;&lt;</button>
-                <button class="glide__arrow glide__arrow--right" data-glide-dir=">">&gt;&gt;</button>
-            </div>
+<div class="container">
+    <div class="glide">
+        <div class="glide__track" data-glide-el="track">
+            <ul class="glide__slides">
+                {% for c_image in self.carousel_images.all %}
+                <li class="glide__slide">
+                    {% image c_image.carousel_image fill-1600x300 %}
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+        <div class="glide__arrows" data-glide-el="controls">
+            <button class="glide__arrow glide__arrow--left" data-glide-dir="<"> &lt;&lt;</button>
+            <button class="glide__arrow glide__arrow--right" data-glide-dir=">">&gt;&gt;</button>
         </div>
     </div>
-</section>
+</div>
 {% endblock %}
 
 {% block content %}
-<section class="section">
-    <div class="container">
+<div class="container">
 
-        <h1 class="title has-text-white-ter">
-            {% if page.show_welcome %}
-            {{ page.welcome }}
-            {% endif %}
-        </h1>
 
-        <div class="columns">
-            <div class="column is-4 is-offset-2">
-                <div class="card">
-                    <div class="card-image">
-                        <a href="{% slugurl 'infos' %}">
-                            <figure class="image is-4by3">
-                                <img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image">
-                            </figure>
-                        </a>
-                    </div>
-                    <div class="card-content">
-                        <div class="content">
-                            Aktuelle Infos hier:
-                            <ul>
-                                <li>Aktuell 1</li>
-                                <li>Aktuell 2</li>
-                                <li>Aktuell 3</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="column is-4">
-                <div class="card">
-                    <div class="card-image">
-                        <a href="{% pageurl page.blog_first %}">
-                            <figure class="image is-4by3">
-                                {% image page.blog_first.cover fill-800x600 %}
-                            </figure>
-                        </a>
-                    </div>
-                    <div class="card-content">
-                        <div class="content">
-                            {{ page.blog_first.title }}
-                        </div>
-                    </div>
+    <div class="tile is-ancestor">
+        <div class="tile is-parent">
+            <div class="tile is-child box">
+                <p class="title">Aktuelle Infos:</p>
+                <div class="content">
+                    {{ self.info|richtext }}
                 </div>
             </div>
         </div>
-
-        <div class="columns">
-            {% for blog in page.blog_follow %}
-            {% if forloop.first %}
-            <div class="column is-4 is-offset-2">
-                <div class="card">
-                    <div class="card-image">
-                        <a href="{% pageurl blog %}">
-                            <figure class="image is-4by3">
-                                {% image blog.cover fill-800x600 %}
-                            </figure>
-                        </a>
-                    </div>
-                    <div class="card-content">
-                        <div class="content">
-                            {{ blog.title }}
-                        </div>
-                    </div>
-                </div>
+        <div class="tile is-parent">
+            <div class="tile is-child box">
+                {% if self.video_id  %}
+                <figure class="image is-16by9">
+                    <iframe width="1366" height="960" class="has-ratio"
+                        src="https://www.youtube-nocookie.com/embed/{{ self.video_id }}"
+                        title="YouTube video player" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen></iframe>
+                </figure>
+                {% endif %}
             </div>
-            {% else %}
-            <div class="column is-4">
-                <div class="card">
-                    <div class="card-image">
-                        <a href="{% pageurl blog %}">
-                            <figure class="image is-4by3">
-                                {% image blog.cover fill-800x600 %}
-                            </figure>
-                        </a>
-                    </div>
-                    <div class="card-content">
-                        <div class="content">
-                            {{ blog.title }}
-                        </div>
-                    </div>
-                </div>
-            </div>
-            {% endif %}
-            {% endfor %}
         </div>
 
     </div>
-</section>
+
+    <div class="tile is-ancestor">
+        {% for blog in page.blog_last %}
+        <div class="tile is-parent">
+            <div class="tile is-child card">
+                <div class="card-image">
+                    <a href="{% pageurl blog %}">
+                        <figure class="image is-16by9">
+                            {% image blog.cover fill-800x600 %}
+                        </figure>
+                    </a>
+                </div>
+                <div class="card-content">
+                    <div class="content">
+                        {{ blog.title }}
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+</div>
 
 {% endblock %}
 

@@ -38,19 +38,19 @@ class ContentPageSections(Orderable):
 
 class ContentPage(Page):
 
+    class Meta:
+        verbose_name = "statische Seite"
 
-    show_heading = models.BooleanField(default=True)
     heading      = models.CharField(blank=True, max_length=256)
-    show_body    = models.BooleanField(default=True)
     body         = RichTextField(blank=True)
+    show_content = models.BooleanField(default=True)
 
     content_panels = Page.content_panels + [
         MultiFieldPanel(
             [
                 FieldPanel('heading', heading="Seitenüberschrift"),
-                FieldPanel('show_heading', heading="Seitenüberschrift anzeigen"),
                 FieldPanel('body', heading="Inhalt"),               
-                FieldPanel('show_body', heading="Seiteninhalt anzeigen")
+                FieldPanel('show_content', heading="Seiteninhalt anzeigen")
             ]
         ),        
         InlinePanel('content_sections', heading="Abschnitte")

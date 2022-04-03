@@ -1,0 +1,9 @@
+{% extends "wagtailadmin/login.html" %}
+
+{% load wagtailcore_tags %}
+{% load static %}
+
+
+{% block above_login %}
+<img src="{% static 'assets/img/ess_logo_raw.svg' %}" style="height: 100px;">
+{% endblock %}
