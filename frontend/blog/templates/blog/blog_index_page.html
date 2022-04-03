@@ -3,68 +3,58 @@
 {% load static %}
 {% load wagtailimages_tags %}
 
-{% block body_class %}template-content{% endblock %}
-
 {% block extra_css %}
-<link rel="stylesheet" href="{% static 'bundle_content.css' %}">
+<link rel="stylesheet" href="{% static 'bundle_blog.css' %}">
 {% endblock %}
 
 {% block content %}
 <section class="section welcome">
     <div class="container is-family-secondary">
-        <h1 class="title has-text-white-ter">{{ page.title }}</h1>
 
-        {% if page.show_subheading %}
-        <div class="content">
-            {{ page.description|richtext }}
-        </div>
+
+        {% if page.show_content %}
+        <section class="section pt-0 pl-0 pr-0">
+            <h1 class="title">{{ page.title }}</h1>
+            <div class="content">
+                {{ page.body|richtext }}
+            </div>
+        </section>
         {% endif %}
 
         <div class="columns">
-            <div class="column is-three-fifths is-offset-one-fifth">
+            <div class="column is-10 is-offset-1">
 
                 {% for post in page.get_children %}
                 <div class="card mb-6">
-                    <div class="card-image">
-                        <a href="{% pageurl post %}">
-                            <figure class="image is-4by3">
-                                {% image post.specific.cover width-1200 %}
-                            </figure>
-                        </a>
-                    </div>
                     <div class="card-content">
                         <article class="media">
-                            <figure class="media-left">
-                                <p class="image is-64x64">
-                                    <img class="is-rounded" src="https://bulma.io/images/placeholders/128x128.png">
-                                </p>
-                            </figure>
                             <div class="media-content">
-                                <div class="content">
-                                    <h2><a href="{% pageurl post %}">{{ post.title }}</a></h2>
-                                    <p>
-                                        <strong>John Smith</strong> <small>{{ post.specific.date }}</small>
-                                    </p>
-                                    <div>
-                                        {{ post.specific.body|richtext }}
+                                <div class="columns">
+                                    <div class="column is-one-third">
+                                        <a href="#">
+                                            <figure class="image is-4by3">
+                                                {% image post.specific.cover width-1200 %}
+                                            </figure>
+                                        </a>
+                                    </div>
+                                    <div class="column">
+                                        <div class="content">
+                                            <h2><a href="{% pageurl post %}">{{ post.title }}</a></h2>
+                                            <p>
+                                                <strong>{{ post.owner.username }}</strong> <small>{{ post.specific.date }}</small>
+                                            </p>
+                                            <div class="content teaser">
+                                                {{ post.specific.body|richtext }}
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-                                <nav class="level is-mobile">
-                                    <div class="level-left">
-                                        <a class="level-item">
-                                            <span class="icon is-small"><i class="fas fa-reply"></i></span>
-                                        </a>
-                                        <a class="level-item">
-                                            <span class="icon is-small"><i class="fas fa-retweet"></i></span>
-                                        </a>
-                                        <a class="level-item">
-                                            <span class="icon is-small"><i class="fas fa-heart"></i></span>
-                                        </a>
-                                    </div>
-                                </nav>
                             </div>
                         </article>
                     </div>
+                    <footer class="card-footer">
+                        <a href="{% pageurl post %}" class="card-footer-item">weiterlesen...</a>
+                    </footer>
                 </div>
                 {% endfor %}
 
@@ -76,5 +66,5 @@
 {% endblock %}
 
 {% block extra_js %}
-<script type="text/javascript" src="{% static 'bundle_content.js' %}"></script>
+<script type="text/javascript" src="{% static 'bundle_blog.js' %}"></script>
 {% endblock %}

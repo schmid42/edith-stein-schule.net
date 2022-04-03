@@ -2,7 +2,7 @@ from django.db import models
 
 from wagtail.core.models import Page
 from wagtail.core.fields import RichTextField
-from wagtail.admin.edit_handlers import FieldPanel
+from wagtail.admin.edit_handlers import FieldPanel, MultiFieldPanel
 from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.search import index
 
@@ -12,12 +12,19 @@ class BlogIndexPage(Page):
     class Meta:
         verbose_name = "Beitragsübersicht"
 
-    show_description    = models.BooleanField(default=True)
-    description = RichTextField(blank=True)
+    heading      = models.CharField(blank=True, max_length=256)
+    body         = RichTextField(blank=True)
+    show_content = models.BooleanField(default=True)
+
 
     content_panels = Page.content_panels + [
-        FieldPanel('show_description', classname="full", heading="Beschreibung anzeigen"),
-        FieldPanel('description', classname="full", heading="Beschreibung"),
+        MultiFieldPanel(
+            [
+                FieldPanel('heading', heading="Seitenüberschrift"),
+                FieldPanel('body', heading="Inhalt"),               
+                FieldPanel('show_content', heading="Seiteninhalt anzeigen")
+            ]
+        )
     ]
 
 class BlogPage(Page):
@@ -35,7 +42,6 @@ class BlogPage(Page):
         on_delete=models.SET_NULL,
         related_name='+'
     )
-
 
     search_fields = Page.search_fields + [
         index.SearchField('body'),

@@ -145,3 +145,6 @@ backend/main/settings/production.py
 
 # backend media directory
 backend/media
+
+# frontend fonts directory
+frontend/assets/fonts

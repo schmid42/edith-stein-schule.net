@@ -23,9 +23,35 @@
 
     <link rel="shortcut icon" type="image/png" href="{% static 'assets/img/ess_favicon_32x32.png' %}">
 
+    {# load webfonts #}
+    <style>
+        /* ubuntu-regular - latin */
+        @font-face {
+            font-family: 'Ubuntu';
+            font-style: normal;
+            font-weight: 400;
+            src:
+                local(''),
+                url("{% static 'assets/fonts/ubuntu-v19-latin-regular.woff2' %}") format('woff2'),
+                /* Chrome 26+, Opera 23+, Firefox 39+ */
+                url("{% static 'assets/fonts/ubuntu-v19-latin-regular.woff' %}") format('woff');
+                /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+        }
+        /* roboto-regular - latin */
+        @font-face {
+            font-family: 'Roboto';
+            font-style: normal;
+            font-weight: 400;
+            src: local(''),
+                url("{% static 'assets/fonts/roboto-v29-latin-regular.woff2' %}") format('woff2'),
+                /* Chrome 26+, Opera 23+, Firefox 39+ */
+                url("{% static 'assets/fonts/roboto-v29-latin-regular.woff' %}") format('woff');
+                /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+        }
+    </style>
+
     {# Global stylesheets #}
     <link rel="stylesheet" type="text/css" href="{% static 'bundle_main.css' %}">
-
     {% block extra_css %}
     {# Override this in templates to add extra stylesheets #}
     {% endblock %}
@@ -40,7 +66,7 @@
     {% block carousel %}{% endblock %}
 
     {% include 'navbar.html' %}
-    
+
     <section class="section">
         <div class="container">
             {% block content %}{% endblock %}
@@ -52,7 +78,6 @@
     {# Global javascript #}
     <script type="text/javascript" src="{% static 'ionicons/ionicons/ionicons.js' %}"></script>
     <script type="text/javascript" src="{% static 'bundle_main.js' %}"></script>
-
     {% block extra_js %}
     {# Override this in templates to add extra javascript #}
     {% endblock %}

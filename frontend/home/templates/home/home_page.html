@@ -2,7 +2,6 @@
 {% load wagtailcore_tags wagtailimages_tags %}
 {% load static %}
 
-{% block body_class %}template-homepage{% endblock %}
 
 {% block extra_css %}
 <link rel="stylesheet" href="{% static 'bundle_home.css' %}">
@@ -28,10 +27,14 @@
 </div>
 {% endblock %}
 
+
+
+
 {% block content %}
 <div class="container">
-
-
+    {% for picture in page.gallery %}
+        <h1 class="title">{% image picture width-400 %}</h1>
+    {% endfor %}
     <div class="tile is-ancestor">
         <div class="tile is-parent">
             <div class="tile is-child box">
@@ -54,9 +57,7 @@
                 {% endif %}
             </div>
         </div>
-
     </div>
-
     <div class="tile is-ancestor">
         {% for blog in page.blog_last %}
         <div class="tile is-parent">
@@ -77,16 +78,9 @@
         </div>
         {% endfor %}
     </div>
-
 </div>
-
 {% endblock %}
 
 {% block extra_js %}
 <script type="text/javascript" src="{% static 'bundle_home.js' %}"></script>
 {% endblock %}
-
-{% comment %}
-Delete the line below if you're just getting started and want to remove the welcome screen!
-{% include 'home/welcome_page.html' %}
-{% endcomment %}

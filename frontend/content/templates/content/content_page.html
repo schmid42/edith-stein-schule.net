@@ -10,17 +10,12 @@
 {% endblock %}
 
 {% block content %}
-{% if page.show_content %}
-    <h1 class="title">
-        {{ page.heading }}
-    </h1>
-    <div class="content">
-        {{ page.body|richtext }}
-    </div>
-{% endif %}
-
-    <nav class="navbar is-light" role="navigation" aria-label="main navigation">
+<section class="section pt-0 pl-0 pr-0">
+    <nav class="navbar is-light" role="navigation" aria-label="main navigation" id="submenu">
         <div class="navbar-brand">
+            <a class="navbar-item" href="{% pageurl self %}">
+                {{ page.heading }}
+              </a>
             <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="contentMenu">
                 <span aria-hidden="true"></span>
                 <span aria-hidden="true"></span>
@@ -39,31 +34,48 @@
             </div>
         </div>
     </nav>
+</section>
+
+{% if page.show_content %}
+<section class="section pt-0 pl-0 pr-0">
+    <div class="content">
+        {{ page.body|richtext }}
+    </div>
+</section>
+{% endif %}
 
 {% for section in self.content_sections.all %}
-        <div class="card" id="submenu-{{ section.link }}">
-            <div class="card-content">
-                <div class="columns">
-                    <div class="column is-one-third">
-                        <figure class="image is-4by3">
-                            {% image section.cover fill-800x600 %}
-                        </figure>
-                    </div>
-                    <div class="column">
-                        <h1 class="title">
-                            {{ section.heading }}
-                        </h1>
-                        <div class="content">
-                            {{ section.body|richtext }}
-                        </div>
+<section class="section pt-0 pl-0 pr-0">
+    <div class="card" id="submenu-{{ section.link }}">
+        <div class="card-content">
+            <div class="columns">
+                <div class="column is-one-third">
+                    <figure class="image is-4by3">
+                        {% image section.cover fill-800x600 %}
+                    </figure>
+                </div>
+                <div class="column">
+                    <h1 class="title">
+                        {{ section.heading }}
+                    </h1>
+                    <div class="content">
+                        {{ section.body|richtext }}
                     </div>
                 </div>
             </div>
-            <footer class="card-footer">
-                <a href="#contentMenu" class="card-footer-item submenu">nach oben</a>
-            </footer>
         </div>
+        <footer class="card-footer">
+            <a href="#submenu" class="card-footer-item submenu">
+                nach oben
+                <span class="icon">
+                    <ion-icon name="caret-up-outline"></ion-icon>
+                </span>
+            </a>
+        </footer>
+    </div>
+</section>
 {% endfor %}
+
 {% endblock %}
 
 {% block extra_js %}

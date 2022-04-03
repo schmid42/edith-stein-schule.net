@@ -14,7 +14,7 @@ module.exports = {
     },
     output: {
         path: path.resolve(__dirname, '../backend'),
-        filename: '[name].js'
+        filename: '[name].js',
     },
     module: {
         rules: [
@@ -29,7 +29,14 @@ module.exports = {
                         loader: 'sass-loader'
                     }
                 ]
-            }
+            },
+            {
+                test: /\.(woff|woff2|eot|ttf|otf)$/i,
+                type: 'asset/resource',
+                generator: {
+                    filename: 'main/static/fonts/[name][ext]'
+                }
+            },
         ]
     },
     plugins: [
@@ -69,12 +76,11 @@ module.exports = {
                     globOptions: {
                         ignore: [
                             // Ignore all subdirectories called 'src'
-                            "**/src",
+                            "**/src"
                         ],
                     }
                 },
-                { from: './node_modules/ionicons/dist', to: '../backend/main/static/ionicons', force: true },
-//                { from: './node_modules/bulma-carousel/dist/css/bulma-carousel.min.css', to: '../backend/main/static/bulma-carousel.min.css', force: true }
+                { from: './node_modules/ionicons/dist/ionicons', to: '../backend/main/static/ionicons/ionicons', force: true }
             ],
             options: {}
         }),

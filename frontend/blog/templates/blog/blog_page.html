@@ -3,10 +3,8 @@
 {% load static %}
 {% load wagtailimages_tags %}
 
-{% block body_class %}template-content{% endblock %}
-
 {% block extra_css %}
-<link rel="stylesheet" href="{% static 'bundle_content.css' %}">
+<link rel="stylesheet" href="{% static 'bundle_blog.css' %}">
 {% endblock %}
 
 {% block content %}
@@ -36,5 +34,5 @@
 {% endblock %}
 
 {% block extra_js %}
-<script type="text/javascript" src="{% static 'bundle_content.js' %}"></script>
+<script type="text/javascript" src="{% static 'bundle_blog.js' %}"></script>
 {% endblock %}
