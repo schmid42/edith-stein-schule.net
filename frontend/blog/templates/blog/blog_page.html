@@ -20,9 +20,7 @@
                 <div class="content">
                     <h1>{{ page.title }}</h1>
                     <p class="meta">{{ page.date }}</p>
-
                     {{ page.body|richtext }}
-
                     <p>
                         <a class="button" href="{{ page.get_parent.url }}">Zurück zu Aktuelles</a>
                     </p>
@@ -31,6 +29,45 @@
         </div>
     </div>
 </section>
+
+
+
+
+
+
+{# renders a gallery view of the attached pictures #}
+{% if page.gallery %}
+<section class="section">
+    <h2 class="title is-2">Bilder:</h2>
+    <div class="columns is-multiline">
+        {% for picture in page.gallery %}
+        <div class="column has-text-centered is-one-fifth">
+            <div class="js-modal-trigger" data-target="id-modal-image-{{ forloop.counter }}">
+                <figure class="image is-1by1">
+                    {% image picture fill-400x400 %}
+                </figure>
+            </div>
+
+
+
+            <div class="modal" id="id-modal-image-{{ forloop.counter }}">
+                <div class="modal-background"></div>
+                <div class="modal-content">
+                    <p class="image">
+                        {% image picture original %}
+                    </p>
+                </div>
+                <button class="modal-close" aria-label="close"></button>
+            </div>
+
+
+
+        </div>
+        {% endfor %}
+    </div>
+</section>
+{% endif %}
+
 {% endblock %}
 
 {% block extra_js %}
