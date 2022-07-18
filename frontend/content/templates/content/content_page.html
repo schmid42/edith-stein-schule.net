@@ -12,6 +12,7 @@
 {% block content %}
 <section class="section pt-0 pl-0 pr-0">
     <nav class="navbar is-light" role="navigation" aria-label="main navigation" id="submenu">
+        {% if page.show_content %}
         <div class="navbar-brand">
             <a class="navbar-item" href="{% pageurl self %}">
                 {{ page.heading }}
@@ -22,6 +23,7 @@
                 <span aria-hidden="true"></span>
             </a>
         </div>
+        {% endif %}
         <div id="contentMenu" class="navbar-menu">
             <div class="navbar-start">
                 {% for section in self.content_sections.all %}
@@ -48,6 +50,7 @@
 <section class="section pt-0 pl-0 pr-0">
     <div class="card" id="submenu-{{ section.link }}">
         <div class="card-content">
+            {% if section.cover %}
             <div class="columns">
                 <div class="column is-one-third">
                     <figure class="image is-4by3">
@@ -63,6 +66,18 @@
                     </div>
                 </div>
             </div>
+            {% else %}
+            <div class="columns">
+                <div class="column">
+                    <h1 class="title">
+                        {{ section.heading }}
+                    </h1>
+                    <div class="content">
+                        {{ section.body|richtext }}
+                    </div>
+                </div>
+            </div>
+            {% endif %}
         </div>
         <footer class="card-footer">
             <a href="#submenu" class="card-footer-item submenu">
