@@ -4,7 +4,7 @@ from .base import *
 
 # Base URL to use when referring to full URLs within the Wagtail admin backend -
 # e.g. in notification emails. Don't include '/admin' or a trailing slash
-BASE_URL = os.getenv('BASE_URL')
+BASE_URL = "http://localhost"
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
