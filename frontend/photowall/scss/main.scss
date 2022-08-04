@@ -1,3 +1,11 @@
 @charset "utf-8";
 
+@import "~bulma/bulma";
+
 @import "~basiclightbox/src/styles/main";
+
+.margin-photo-tablet {  
+    @include desktop {
+        margin: 3rem;
+    }
+}
