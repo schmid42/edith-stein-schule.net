@@ -30,23 +30,23 @@
             font-family: 'Ubuntu';
             font-style: normal;
             font-weight: 400;
-            src:
-                local(''),
-                url("{% static 'assets/fonts/ubuntu-v19-latin-regular.woff2' %}") format('woff2'),
-                /* Chrome 26+, Opera 23+, Firefox 39+ */
-                url("{% static 'assets/fonts/ubuntu-v19-latin-regular.woff' %}") format('woff');
-                /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+            src: local(''),
+            url("{% static 'assets/fonts/ubuntu-v19-latin-regular.woff2' %}") format('woff2'),
+            /* Chrome 26+, Opera 23+, Firefox 39+ */
+            url("{% static 'assets/fonts/ubuntu-v19-latin-regular.woff' %}") format('woff');
+            /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
         }
+
         /* roboto-regular - latin */
         @font-face {
             font-family: 'Roboto';
             font-style: normal;
             font-weight: 400;
             src: local(''),
-                url("{% static 'assets/fonts/roboto-v29-latin-regular.woff2' %}") format('woff2'),
-                /* Chrome 26+, Opera 23+, Firefox 39+ */
-                url("{% static 'assets/fonts/roboto-v29-latin-regular.woff' %}") format('woff');
-                /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+            url("{% static 'assets/fonts/roboto-v29-latin-regular.woff2' %}") format('woff2'),
+            /* Chrome 26+, Opera 23+, Firefox 39+ */
+            url("{% static 'assets/fonts/roboto-v29-latin-regular.woff' %}") format('woff');
+            /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
         }
     </style>
 
@@ -71,6 +71,9 @@
 
     <section class="section">
         <div class="container">
+            {% block contact %}
+                {# Override this in templates to show contact information #}
+            {% endblock %}
             {% block content %}{% endblock %}
         </div>
     </section>

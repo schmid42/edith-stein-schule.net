@@ -29,9 +29,36 @@
 
 
 
+{% block contact %}
+<div class="block has-text-centered is-hidden-tablet">
+    <h1 class="is-size-3 mb-4">
+        Edith-Stein-Schule
+    </h1>
+
+    <p class="is-size-5 mb-4">
+        <a class="link is-info" href="https://goo.gl/maps/S2aDzV4nXWJRPw8o8" target="_blank">
+            Schulstraße 29<br>
+            86551 Aichach
+        </a>
+    </p>
+    <p class="is-size-5 mb-4">
+        <a class="link is-info" href="tel:+498251877930">
+            Tel: 08251 87793-0<br>
+            [08.00 - 12.45 Uhr]
+        </a>
+    </p>
+
+    <p class="is-size-5 mb-4">Telefax: 08251 87793-40</p>
+
+    <p class="is-size-5 mb-4">
+        <a class="link is-info" href="mailto:verwaltung@sfz-aichach.de">
+            E-Mail: verwaltung@sfz-aichach.de
+        </a>
+    </p>
+</div>
+{% endblock %}
 
 {% block content %}
-<div class="container">
     <div class="tile is-ancestor">
         <div class="tile is-parent">
             <div class="tile is-child box">
@@ -75,7 +102,6 @@
         </div>
         {% endfor %}
     </div>
-</div>
 {% endblock %}
 
 {% block extra_js %}
