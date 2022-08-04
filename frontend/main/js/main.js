@@ -1,8 +1,5 @@
 require('../scss/main.scss');
 
-
-console.log("Hello from main!");
-
 // Get all "navbar-burger" elements
 const burgers = document.querySelectorAll('.navbar-burger');
 

@@ -11,6 +11,7 @@ module.exports = {
         'home/static/bundle_home': './home/js/main.js',
         'blog/static/bundle_blog': './blog/js/main.js',
         'content/static/bundle_content': './content/js/main.js',
+        'photowall/static/bundle_photowall': './photowall/js/main.js',
     },
     output: {
         path: path.resolve(__dirname, '../backend'),
@@ -52,6 +53,8 @@ module.exports = {
                     'content/templates',
                     'blog/static',
                     'blog/templates',
+                    'photowall/static',
+                    'photowall/templates',
                     'search/templates'
                 ],
                 log: true,
@@ -70,6 +73,7 @@ module.exports = {
                 { from: './home/templates', to: '../backend/home/templates', force: true },
                 { from: './content/templates', to: '../backend/content/templates', force: true },
                 { from: './blog/templates', to: '../backend/blog/templates', force: true },
+                { from: './photowall/templates', to: '../backend/photowall/templates', force: true },
                 { from: './search/templates', to: '../backend/search/templates', force: true },
                 {
                     from: './assets', to: '../backend/main/static/assets', force: true,

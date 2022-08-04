@@ -25,6 +25,7 @@ INSTALLED_APPS = [
     'content',
     'blog',
     'dashboard',
+    'photowall',
     
     'wagtail.contrib.forms',
     'wagtail.contrib.redirects',
@@ -37,6 +38,7 @@ INSTALLED_APPS = [
     'wagtail.search',
     'wagtail.admin',
     'wagtail.core',
+    'wagtail.api.v2',
 
     'modelcluster',
     'taggit',
