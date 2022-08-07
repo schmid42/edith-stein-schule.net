@@ -2,18 +2,25 @@ require('../scss/main.scss');
 
 import * as basicLightbox from 'basiclightbox'
 
-const photosThumb = document.querySelectorAll('.photo-thumb');
-const photosOrig  = document.querySelectorAll('.photo-orig');
+document.addEventListener('DOMContentLoaded', () => {
 
-const boxes = [];
+    const photosThumb = document.querySelectorAll('.photo-thumb');
+    const photosOrig = document.querySelectorAll('.photo-orig');
 
-photosOrig.forEach((photo, i) => {
-    const photoInstance = basicLightbox.create(photo);
-    boxes.push(photoInstance);
-});
+    // stores all lightbox instances
+    const boxes = [];
 
-photosThumb.forEach((photo, i) => {
-    photo.addEventListener('click', (event) => {
-        boxes[i].show();
+    // create a lightbox per photo and store it
+    photosOrig.forEach((photo, i) => {
+        const photoInstance = basicLightbox.create(photo);
+        boxes.push(photoInstance);
     });
+
+    // add click handler to thumbnail to show connected lightbox
+    photosThumb.forEach((photo, i) => {
+        photo.addEventListener('click', (event) => {
+            boxes[i].show();
+        });
+    });
+
 });
