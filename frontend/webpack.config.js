@@ -1,5 +1,6 @@
 const path = require('path');
 
+
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const RemovePlugin = require('remove-files-webpack-plugin');
 const CopyPlugin = require("copy-webpack-plugin");
@@ -17,6 +18,7 @@ module.exports = {
         path: path.resolve(__dirname, '../backend'),
         filename: '[name].js',
     },
+    devtool: "eval-cheap-source-map",
     module: {
         rules: [
             {
