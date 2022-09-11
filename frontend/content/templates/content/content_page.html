@@ -11,22 +11,23 @@
 
 {% block content %}
 <section class="section pt-0 pl-0 pr-0">
+
+    {% if page.show_content %}
+    <div class="content">
+        <h1>{{ page.heading }}</h1>
+        {{ page.body|richtext }}
+    </div>
+    {% else %}
+    <div class="content">
+        <h1>{{ page.heading }}</h1>
+    </div>
+    {% endif %}
+
+    {% if page.content_sections.count > 0 %}
     <nav class="navbar is-light" role="navigation" aria-label="main navigation" id="submenu">
-        {% if page.show_content %}
-        <div class="navbar-brand">
-            <a class="navbar-item" href="{% pageurl self %}">
-                {{ page.heading }}
-              </a>
-            <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="contentMenu">
-                <span aria-hidden="true"></span>
-                <span aria-hidden="true"></span>
-                <span aria-hidden="true"></span>
-            </a>
-        </div>
-        {% endif %}
         <div id="contentMenu" class="navbar-menu">
             <div class="navbar-start">
-                {% for section in self.content_sections.all %}
+                {% for section in page.content_sections.all %}
                 <a class="navbar-item submenu" href="#submenu-{{ section.link }}">
                     {{ section.heading }}
                 </a>
@@ -36,17 +37,11 @@
             </div>
         </div>
     </nav>
+    {% endif %}
+
 </section>
 
-{% if page.show_content %}
-<section class="section pt-0 pl-0 pr-0">
-    <div class="content">
-        {{ page.body|richtext }}
-    </div>
-</section>
-{% endif %}
-
-{% for section in self.content_sections.all %}
+{% for section in page.content_sections.all %}
 <section class="section pt-0 pl-0 pr-0">
     <div class="card" id="submenu-{{ section.link }}">
         <div class="card-content">
