@@ -18,12 +18,25 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const canvasContainer = document.querySelector('#canvas-container');
 
-    let app = new PIXI.Application({
-        width: 900,
-        height: 675,
-        backgroundColor: 0x000000
+    const app = new PIXI.Application({
+        resolution: window.devicePixelRatio || 1,
+        autoDensity: true,
+        width: 1000,
+        height: 528,
+        backgroundColor: 0xc0c0c0,
+        backgroundAlpha: 1
     });
 
     canvasContainer.appendChild(app.view);
 
+    const textureButton = PIXI.Texture.from('media/images/dot.original.png');
+    const button = new PIXI.Sprite(textureButton);
+    button.x = 360;
+    button.y = 300;
+    
+    button.interactive = true;
+    button.buttonMode = true;
+    
+    app.stage.addChild(button);
 });
+
