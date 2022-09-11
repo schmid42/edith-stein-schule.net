@@ -5,7 +5,6 @@ from wagtail.core.fields import RichTextField
 from wagtail.admin.edit_handlers import FieldPanel, MultiFieldPanel
 from wagtail.snippets.edit_handlers import SnippetChooserPanel
 from wagtail.snippets.models import register_snippet
-from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.images.models import Image
 from wagtail.search import index
 
@@ -63,7 +62,7 @@ class BlogPage(Page):
 
     content_panels = Page.content_panels + [
         FieldPanel('date', classname="full", heading="Veröffentlicht am"),
-        ImageChooserPanel('cover', classname="full", heading="Bild zu dieser Seite"),
+        FieldPanel('cover', classname="full", heading="Bild zu dieser Seite"),
         FieldPanel('body', classname="full", heading="Inhalt"),
-        SnippetChooserPanel('collection', classname="full", heading="Bildergallerie")
+        FieldPanel('collection', classname="full", heading="Bildergallerie")
     ]

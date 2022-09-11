@@ -4,8 +4,7 @@ from modelcluster.fields import ParentalKey
 
 from wagtail.core.models import Page, Orderable
 from wagtail.core.fields import RichTextField
-from wagtail.admin.edit_handlers import FieldPanel, InlinePanel, MultiFieldPanel, FieldRowPanel
-from wagtail.images.edit_handlers import ImageChooserPanel
+from wagtail.admin.edit_handlers import FieldPanel, InlinePanel, MultiFieldPanel
 
 import uuid
 
@@ -29,7 +28,7 @@ class ContentPageSections(Orderable):
 
     panels = [
         FieldPanel('heading', heading="Überschrift"),
-        ImageChooserPanel('cover', heading="Bild zu diesem Abschnitt"),
+        FieldPanel('cover', heading="Bild zu diesem Abschnitt"),
         FieldPanel('body', heading="Inhalt")
     ]
 
