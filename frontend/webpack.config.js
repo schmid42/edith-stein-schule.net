@@ -13,6 +13,7 @@ module.exports = {
         'blog/static/bundle_blog': './blog/js/main.js',
         'content/static/bundle_content': './content/js/main.js',
         'photowall/static/bundle_photowall': './photowall/js/main.js',
+        'leitbild/static/bundle_leitbild': './leitbild/js/main.js',
     },
     output: {
         path: path.resolve(__dirname, '../backend'),
@@ -57,6 +58,8 @@ module.exports = {
                     'blog/templates',
                     'photowall/static',
                     'photowall/templates',
+                    'leitbild/static',
+                    'leitbild/templates',
                     'search/templates'
                 ],
                 log: true,
@@ -76,6 +79,7 @@ module.exports = {
                 { from: './content/templates', to: '../backend/content/templates', force: true },
                 { from: './blog/templates', to: '../backend/blog/templates', force: true },
                 { from: './photowall/templates', to: '../backend/photowall/templates', force: true },
+                { from: './leitbild/templates', to: '../backend/leitbild/templates', force: true },
                 { from: './search/templates', to: '../backend/search/templates', force: true },
                 {
                     from: './assets', to: '../backend/main/static/assets', force: true,

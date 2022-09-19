@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% load wagtailcore_tags %}
+{% load static %}
+{% load wagtailimages_tags %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'bundle_leitbild.css' %}">
+{% endblock %}
+
+{% block content %}
+<section class="section">
+    <div class="container has-text-centered" id="canvas-container"></div>
+</section>
+
+<section>
+<div class="tabs is-centered">
+    <ul>
+      <li class="is-active"><a>Zusammenarbeit</a></li>
+      <li><a>Gemeinschaft</a></li>
+      <li><a>Vertrauen</a></li>
+      <li><a>Lernen</a></li>
+      <li><a>Schulleben</a></li>
+    </ul>
+  </div>
+</section>
+
+<section class="tab-content">
+    <div class="content pt-5 pl-3 pr-3">
+        {{ page.teamwork|richtext }}
+    </div>
+    <div class="content pt-5 pl-3 pr-3 is-hidden">
+        {{ page.community|richtext }}
+    </div>
+    <div class="content pt-5 pl-3 pr-3 is-hidden">
+        {{ page.trust|richtext }}
+    </div>
+    <div class="content pt-5 pl-3 pr-3 is-hidden">
+        {{ page.learning|richtext }}
+    </div>
+    <div class="content pt-5 pl-3 pr-3 is-hidden">
+        {{ page.schoollife|richtext }}
+    </div>
+</section>
+
+{% endblock %}
+
+{% block extra_js %}
+<script type="text/javascript" src="{% static 'bundle_leitbild.js' %}"></script>
+{% endblock %}

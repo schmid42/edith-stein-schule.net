@@ -26,6 +26,7 @@ INSTALLED_APPS = [
     'blog',
     'dashboard',
     'photowall',
+    'leitbild',
     
     'wagtail.contrib.forms',
     'wagtail.contrib.redirects',
